@@ -3,6 +3,7 @@ import { ContentSection } from '../../../../components/ContentSection/ContentSec
 import { MiddleSection } from '../../../../components/MiddleSection/MiddleSection';
 import { CardSection } from '../../../../components/MiddleSection/components/CardSection/CardSection';
 import { CardSunny } from '../../../../components/MiddleSection/components/CardSunny/CardSunny';
+import { useNavigate } from 'react-router-dom';
 
 const { Sider, Content } = Layout;
 
@@ -34,6 +35,25 @@ const cardData = [
 ];
 
 export const Home = () => {
+  const navigate = useNavigate();
+
+  const handleMenuClick = (e) => {
+    // Map menu keys to routes
+    const routeMapping = {
+      1: '/about-harmon',
+      2: '/discover',
+      3: '/chat',
+      4: '/experts',
+      5: '/community',
+      6: '/friends',
+      7: '/blog',
+    };
+
+    // Navigate to the corresponding route
+    if (routeMapping[e.key]) {
+      navigate(routeMapping[e.key]);
+    }
+  };
   return (
     <Layout style={{ minHeight: '100vh' }}>
       {/* Full-Width Image */}
@@ -60,6 +80,7 @@ export const Home = () => {
           <Menu
             mode='inline'
             defaultSelectedKeys={['1']}
+            onClick={handleMenuClick}
             style={{
               height: '100%',
               borderRight: 0,
