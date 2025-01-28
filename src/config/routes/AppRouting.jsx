@@ -5,6 +5,9 @@ import { Expert } from '../../pages/Expert';
 import { Discover } from '../../pages/Discover';
 import { Community } from '../../pages/Community';
 import { PageNotFound } from '../../pages/PagesNotFound';
+import { Conversation } from '../../pages/Conversation';
+import { ListConversation } from '../../pages/Conversation/components/ListConversation/ListConversation';
+import { InCall } from '../../pages/Conversation/components/InCall/InCall';
 
 const AppRouting = () => {
   return (
@@ -17,6 +20,10 @@ const AppRouting = () => {
       <Route exact path='/experts' element={<Expert />}></Route>
       <Route exact path='/discover' element={<Discover />}></Route>
       <Route exact path='/community' element={<Community />}></Route>
+      <Route exact path='/chat' element={<Conversation />}>
+        <Route path='' element={<ListConversation />} />
+      </Route>
+      <Route path='call' element={<InCall />} />
       <Route path='*' element={<PageNotFound />} />
     </Routes>
   );
